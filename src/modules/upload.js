@@ -88,6 +88,7 @@ layui.define(['lay', 'layer'], function(exports){
     size: 0, // 文件限制大小，默认不限制
     number: 0, // 允许同时上传的文件数，默认不限制
     multiple: false, // 是否允许多文件上传，不支持 ie8-9
+    webkitdirectory:false,  // 是否上存文件夹，仅支持webkit浏览器
     text: { // 自定义提示文本
       "cross-domain": "Cross-domain requests are not supported", // 跨域
       "data-format-error": "Please return JSON data format", // 数据格式错误
@@ -153,6 +154,7 @@ layui.define(['lay', 'layer'], function(exports){
     var elemFile = that.elemFile = $([
       '<input class="'+ ELEM_FILE +'" type="file" accept="'+ options.acceptMime +'" name="'+ options.field +'"'
       ,(options.multiple ? ' multiple' : '') 
+      ,(options.webkitdirectory && options.multiple ? ' webkitdirectory' : '') 
       ,'>'
     ].join(''));
     var next = options.elem.next();
