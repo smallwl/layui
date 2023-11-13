@@ -295,11 +295,13 @@ layui.define(['lay', 'layer'], function(exports){
             if (file[UPLOADING]) return;
             file[UPLOADING] = true; // 上传中的标记
             formData.append(options.field, file);
+            if(options.webkitdirectory) formData.append('webkitRelativePath', file.webkitRelativePath);
           });
         } else { // 逐一上传
           if (sets.file[UPLOADING]) return;
           formData.append(options.field, sets.file);
           sets.file[UPLOADING] = true; // 上传中的标记
+          if(options.webkitdirectory) formData.append('webkitRelativePath', sets.file.webkitRelativePath);
         }
 
         // ajax 参数
